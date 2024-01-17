@@ -1,15 +1,16 @@
-from django.shortcuts import render
-
-# Create your views here.
-
+from rest_framework import viewsets
+from .serializers import OrderSerializer, OrderItemSerializer, CustomerSerializer
 from .models import Order, OrderItem, Customer
 
-def order_list(request):
-    orders = Order.objects.all()
-    return render(request, 'sop/order_list.html', {'orders': orders})
+class OrderView(viewsets.ModelViewSet):
+    serializer_class = OrderSerializer
+    queryset = Order.objects.all()
 
-def order_detail(request, order_id):
-    order = Order.objects.get(id=order_id)
-    items = OrderItem.objects.filter(order=order)
-    customer = Customer.objects.get(id=order.customer_id)
-    return render(request, 'sop/order_detail.html', {'order': order, 'items': items, 'customer': customer})
+class OrderItemView(viewsets.ModelViewSet):
+    serializer_class = OrderItemSerializer
+    queryset = OrderItem.objects.all()
+
+class CustomerView(viewsets.ModelViewSet):
+    serializer_class = CustomerSerializer
+    queryset = Customer.objects.all()
+

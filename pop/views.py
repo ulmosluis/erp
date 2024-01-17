@@ -1,9 +1,9 @@
-from django.shortcuts import render
-
-# Create your views here.
-
+from rest_framework import viewsets
+from .serializers import SupplierSerializer
 from .models import Supplier
 
-def supplier_list(request):
-    suppliers = Supplier.objects.all()
-    return render(request, 'pop/supplier_list.html', {'suppliers': suppliers})
+
+class SupplierView(viewsets.ModelViewSet):
+    serializer_class = SupplierSerializer
+    queryset = Supplier.objects.all()
+

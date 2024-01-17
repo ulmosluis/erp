@@ -1,6 +1,10 @@
-from django.urls import path
-from . import views
+from django.urls import path, include
+from rest_framework import routers
+from pop import views
+
+router = routers.DefaultRouter()
+router.register(r'pop',views.SupplierView,'Supplier')
 
 urlpatterns = [
-    path('', views.supplier_list, name='supplier_list'),
+    path('pop',include(router.urls))
 ]
