@@ -6,5 +6,5 @@ router = routers.DefaultRouter()
 router.register(r'pop',views.SupplierView,'Supplier')
 
 urlpatterns = [
-    path('pop',include(router.urls))
+    path('pop/',include(router.urls))
 ]

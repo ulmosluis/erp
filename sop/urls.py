@@ -1,13 +1,13 @@
 from django.urls import path, include
 from rest_framework import routers
-from inv import views
+from sop import views
 
 router = routers.DefaultRouter()
-router.register(r'sop',views.ProducView,'orders')
-router.register(r'sop',views.ProducView,'order_items')
-router.register(r'sop',views.ProducView,'customers')
+router.register(r'sop',views.OrderView,'orders')
+router.register(r'sop',views.OrderItemView,'order_items')
+router.register(r'sop',views.CustomerView,'customers')
 
 urlpatterns = [
-    path('sop',include(router.urls))
+    path('sop/',include(router.urls))
 ]
 
