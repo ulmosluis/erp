@@ -10,3 +10,10 @@ class Product(models.Model):
 
     def __str__(self):
         return self.name
+    
+class category(models.Model):
+    categoryName = models.CharField(max_length=100)
+    categoryDescription = models.CharField(max_length=200)
+
+    def __str__(self):
+        return self.categoryName
