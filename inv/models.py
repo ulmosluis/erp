@@ -25,3 +25,19 @@ class Warehouse(models.Model):
 
     def __str__(self):
         return self.warehouseName
+    
+
+
+
+
+
+
+class ProductImage(models.Model):
+    product = models.ForeignKey('Product', on_delete=models.CASCADE)
+    image_file = models.ImageField(upload_to='product_images/')
+    caption = models.CharField(max_length=200)
+
+    def __str__(self):
+        return f"Image for {self.product.productName}"
+
+
